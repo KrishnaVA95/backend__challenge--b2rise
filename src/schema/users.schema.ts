@@ -17,4 +17,13 @@ const userSchemaResponse = userSchema.omit({
     password: true
 })
 
-export {userSchema, userSchemaRequest, userSchemaResponse}
+const userSchemaUpdate = userSchema.omit({
+    id: true
+}).partial()
+
+export {
+    userSchema,
+    userSchemaRequest, 
+    userSchemaResponse,
+    userSchemaUpdate
+}

@@ -15,4 +15,13 @@ const productSchemaRequest = productSchema.omit({
 
 const productSchemaResponse = productSchema
 
-export {productSchema, productSchemaRequest, productSchemaResponse}
+const productSchemaUpdate = productSchema.omit({
+    id: true
+}).partial()
+
+export {
+    productSchema, 
+    productSchemaRequest, 
+    productSchemaResponse, 
+    productSchemaUpdate
+}
