@@ -3,6 +3,7 @@ import { AppDataSource } from "../../data-source";
 import { User } from "../../entities/user.entitie";
 import { TUserRequest, TUserResponse } from "../../interfaces/users.interfaces";
 import { AppError } from "../../errors/AppError";
+import { userSchemaResponse } from "../../schema/users.schema";
 
 
 const createUserService = async(data: TUserRequest): Promise<TUserResponse> =>{
@@ -29,7 +30,7 @@ const createUserService = async(data: TUserRequest): Promise<TUserResponse> =>{
     })
 
     await userRepository.save(user)
-    return user
+    return userSchemaResponse.parse(user)
 }
 
 export {createUserService}
