@@ -11,9 +11,9 @@ class User{
     @Column({ type: 'varchar', length: 50 })
     username: string;
 
-    @Column({ type: 'varchar', length: 50 })
+    @Column({ type: 'varchar', length: 255 })
     password: string;
-
+    
     @Column({ type: 'varchar', length: 50 })
     first_name: string;
 
