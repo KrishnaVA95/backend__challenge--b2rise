@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { createUserController, listUserController } from "../controllers/users.controller";
+import { createUserController, listUserController, updateUserController } from "../controllers/users.controller";
 import { ensureDataIsValid } from "../middlewares/ensureDataIsValid.middlewares";
-import { userSchemaRequest } from "../schema/users.schema";
+import { userSchemaRequest, userSchemaUpdate } from "../schema/users.schema";
 
 const userRoutes = Router()
 
@@ -11,5 +11,9 @@ createUserController)
 
 userRoutes.get('', 
 listUserController)
+
+userRoutes.patch('/:id', 
+ensureDataIsValid(userSchemaUpdate),
+updateUserController)
 
 export {userRoutes}

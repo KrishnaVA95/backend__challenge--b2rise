@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { createUserService } from "../services/users/createUser.service";
 import { listUsersService } from "../services/users/listUsers.service";
+import { updateUserService } from "../services/users/updateUser.service";
 
 
 const createUserController = async(req: Request, res: Response) =>{
@@ -13,11 +14,15 @@ const listUserController = async(req: Request, res: Response) =>{
     return res.status(200).json(list)
 }
 
-const updateUserController = async(req: Request, res: Response) =>{}
+const updateUserController = async(req: Request, res: Response) =>{
+    const updateUser = await updateUserService(req.body, req.params.id)
+    return res.json(updateUser)
+}
 
 const deleteUserController = async(req: Request, res: Response) =>{}
 
 export {
     createUserController,
-    listUserController
+    listUserController,
+    updateUserController
 }
