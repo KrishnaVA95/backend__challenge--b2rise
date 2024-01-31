@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert } from "typeorm";
 
 @Entity('users')
 class User{
@@ -20,6 +20,10 @@ class User{
     @Column({ type: 'varchar', length: 50 })
     last_name: string;
 
+    @BeforeInsert()
+    transformEmailLower(){
+        this.email = this.email.toLowerCase()
+    }
 }
 
 export {User}
