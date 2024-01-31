@@ -7,4 +7,10 @@ const createUserController = async(req: Request, res: Response) =>{
     return res.status(201).json(newUser)
 }
 
+const listUserController = async(req: Request, res: Response) =>{}
+
+const updateUserController = async(req: Request, res: Response) =>{}
+
+const deleteUserController = async(req: Request, res: Response) =>{}
+
 export {createUserController}
