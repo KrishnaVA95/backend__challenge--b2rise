@@ -21,9 +21,12 @@ const userSchemaUpdate = userSchema.omit({
     id: true
 }).partial()
 
+const listUsersSchemaResponse = z.array(userSchemaResponse)
+
 export {
     userSchema,
     userSchemaRequest, 
     userSchemaResponse,
-    userSchemaUpdate
+    userSchemaUpdate,
+    listUsersSchemaResponse
 }

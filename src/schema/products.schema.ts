@@ -19,9 +19,12 @@ const productSchemaUpdate = productSchema.omit({
     id: true
 }).partial()
 
+const listProductsSchemaResponse = z.array(productSchemaResponse)
+
 export {
     productSchema, 
     productSchemaRequest, 
     productSchemaResponse, 
-    productSchemaUpdate
+    productSchemaUpdate,
+    listProductsSchemaResponse
 }
