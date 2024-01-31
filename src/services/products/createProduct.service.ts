@@ -1,5 +1,6 @@
 import { AppDataSource } from "../../data-source";
 import { Product } from "../../entities/product.entitie";
+import { AppError } from "../../errors/AppError";
 import { TProductRequest, TProductResponse } from "../../interfaces/products.interfaces";
 
 
@@ -14,7 +15,7 @@ const createProductService = async(data: TProductRequest): Promise<TProductRespo
     })
 
     if(findProduct){
-        throw new Error('product already exists')
+        throw new AppError('product already exists', 409)
     }
 
     const product = productRepository.create({

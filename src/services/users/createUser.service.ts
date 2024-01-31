@@ -2,6 +2,7 @@ import { hash } from "bcryptjs";
 import { AppDataSource } from "../../data-source";
 import { User } from "../../entities/user.entitie";
 import { TUserRequest, TUserResponse } from "../../interfaces/users.interfaces";
+import { AppError } from "../../errors/AppError";
 
 
 const createUserService = async(data: TUserRequest): Promise<TUserResponse> =>{
@@ -15,7 +16,7 @@ const createUserService = async(data: TUserRequest): Promise<TUserResponse> =>{
     })
 
     if(findUser){
-        throw new Error('user already exists')
+        throw new AppError('user already exists', 409)
     }
 
     const hashedPassword = await hash(password, 10)
