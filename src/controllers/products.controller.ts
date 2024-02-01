@@ -3,6 +3,7 @@ import { createProductService } from "../services/products/createProduct.service
 import { listProductsService } from "../services/products/listProduct.service";
 import { updateProductService } from "../services/products/updateProduct.service";
 import { deleteProductService } from "../services/products/deleteProduct.service";
+import retrieveProductByIdService from "../services/products/retriveProductById.service";
 
 
 const createProductController = async(req: Request, res: Response) =>{
@@ -16,6 +17,11 @@ const listProductController = async(req: Request, res: Response) =>{
     const filters = req.query.filters
     const list = await listProductsService(page, perPage, filters)
     return res.status(200).json(list)
+}
+
+const retriveProductByIdController = async(req: Request, res: Response) =>{
+    const product = await retrieveProductByIdService(req.params.id)
+    return res.status(200).json(product)
 }
 
 const updateProductController = async(req: Request, res: Response) =>{
@@ -32,5 +38,6 @@ export {
     createProductController,
     listProductController,
     updateProductController,
-    deleteProductController
+    deleteProductController,
+    retriveProductByIdController
 }
