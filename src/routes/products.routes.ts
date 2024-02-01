@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createProductController, deleteProductController, listProductController, updateProductController } from "../controllers/products.controller";
+import { createProductController, deleteProductController, listProductController, retriveProductByIdController, updateProductController } from "../controllers/products.controller";
 import { ensureDataIsValid } from "../middlewares/ensureDataIsValid.middlewares";
 import { productSchemaRequest, productSchemaUpdate } from "../schema/products.schema";
 
@@ -11,6 +11,9 @@ createProductController)
 
 productsRoutes.get('', 
 listProductController)
+
+productsRoutes.get('/:id', 
+retriveProductByIdController)
 
 productsRoutes.patch('/:id', 
 ensureDataIsValid(productSchemaUpdate),
