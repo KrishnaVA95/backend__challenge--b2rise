@@ -10,7 +10,12 @@ const listProductsService = async (page: number, perPage: number, filters: any):
     let products: Product[] | undefined
 
     if(!page || !perPage){
-        products = await productRepository.find()
+        products = await productRepository.find({
+            where: filters,
+            order: {
+                title: 'asc',
+            }
+        })
     }else{
         products = await productRepository.find({
             where: filters,
