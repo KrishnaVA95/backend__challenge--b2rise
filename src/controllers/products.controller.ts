@@ -11,7 +11,10 @@ const createProductController = async(req: Request, res: Response) =>{
 }
 
 const listProductController = async(req: Request, res: Response) =>{
-    const list = await listProductsService()
+    const page: number | undefined = Number(req.query.page)
+    const perPage: number | undefined = Number(req.query.perPage)
+    const filters = req.query.filters
+    const list = await listProductsService(page, perPage, filters)
     return res.status(200).json(list)
 }
 

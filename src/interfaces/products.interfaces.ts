@@ -8,10 +8,17 @@ type TProductResponse = z.infer<typeof productSchemaResponse>
 type TListProductsResponse = z.infer<typeof listProductsSchemaResponse>
 type TProductUpdate =  DeepPartial<TProductRequest>
 
+type TProductPagination = {
+    page: number | null | undefined,
+    perPage: number | null | undefined,
+    data: TListProductsResponse
+}
+
 export {
     TProduct, 
     TProductRequest, 
     TProductResponse,
     TListProductsResponse,
-    TProductUpdate
+    TProductUpdate,
+    TProductPagination
 }
