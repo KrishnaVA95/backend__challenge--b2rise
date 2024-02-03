@@ -1,11 +1,25 @@
-# Index
 
-* [Introdução](#introdução)
-* [BaseURL](#baseurl)
-* [Endpoints](#endpoints)
+# 🚀 Backend challenge 
 
 
-# Instruções
+<div>
+    <img align="center" alt="Krishna-Node" height="30" width="40" src="https://www.vectorlogo.zone/logos/nodejs/nodejs-icon.svg">
+    <img align="center" alt="Krishna-PSQL" height="30" width="40" src="https://www.vectorlogo.zone/logos/postgresql/postgresql-icon.svg">
+     <img align="center" alt="Krishna-Ts" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-plain.svg">
+</div>
+
+
+# 📋 Sobre
+
+<p>
+Este projeto é um sistema de gerenciamento de pedidos de compra que opera com quatro entidades principais: Usuários, Produtos, Ordens de Compra e Itens de Ordem de Compra.</p> 
+<p>
+O sistema fornece uma variedade de rotas para gerenciar essas entidades. As rotas de Usuários permitem a criação, listagem, atualização e exclusão de usuários. As rotas de Produtos permitem a criação, listagem, busca por ID, atualização e exclusão de produtos, com suporte para filtros e paginação na listagem de produtos. As rotas de Ordens de Compra permitem a geração de uma ordem de compra para um usuário e a listagem das ordens de compra de um usuário com a possibilidade de aplicar filtros. Além disso, há uma rota para a geração de um item para uma ordem de compra.</p> 
+<p>
+Em resumo, este projeto oferece um sistema robusto e flexível para o gerenciamento de pedidos de compra, proporcionando uma ampla gama de funcionalidades para atender às necessidades dos usuários</p> 
+
+
+# 📋 Instruções
 
 -  Clone o repositório
 ```
@@ -59,7 +73,7 @@ npm install
 npm run dev
 ```
 
-# BaseURL:
+# Base URL:
 ```
  localhost:3000
 ```
@@ -81,7 +95,7 @@ npm run dev
 | POST   | /purchaseOrder/item        | Gerar item para um ordem de compra                 | 
 
 
-## Endpoints - Casos de Sucesso, Produtos
+## Endpoints - Casos de Sucesso, Produtos  ✔️
 
 ### Busca de produtos com paginação e com a possibilidade de utilização de filtros
 
@@ -316,7 +330,7 @@ Não necessita corpo de requisição
 Resposta: `status 204`
 
 
-## Endpoints - Casos de Sucesso, Users
+## Endpoints - Casos de Sucesso, Users  ✔️
 
 ### Criação de Usuário 
 
@@ -398,7 +412,7 @@ Não necessita corpo de requisição
 
 Resposta: `status 204`
 
-## Endpoints - Casos de Sucesso, PurchaseOrders
+## Endpoints - Casos de Sucesso, PurchaseOrders  ✔️
 
 ### Criação de ordem de compra 
 
@@ -498,7 +512,7 @@ Resposta: `status 200`
 ```
 
 
-## Endpoints - Casos de Sucesso, PurchaseOrdersItems
+## Endpoints - Casos de Sucesso, PurchaseOrdersItems  ✔️
 
 ### Adicionar produto em uma  ordem de compra 
 
