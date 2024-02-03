@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert, OneToMany } from "typeorm";
+import { PurchaseOrder } from "./purchaseOrders.entitie";
 
 @Entity('users')
 class User{
@@ -19,6 +20,9 @@ class User{
 
     @Column({ type: 'varchar', length: 50 })
     last_name: string;
+
+    @OneToMany(() => PurchaseOrder, (purchase_order) => purchase_order.user)
+    purchase_order: PurchaseOrder[]
 
     @BeforeInsert()
     transformEmailLower(){
