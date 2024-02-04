@@ -83,6 +83,7 @@ npm run dev
 | ------ | -------------------------- | -------------------------------------------------  | 
 | POST   | /users                     | Criação de usuário                                 | 
 | GET    | /users                     | Lista todos os usuários                            | 
+| GET    | /users/:id                 | Lista um usuário com ordes de compras e filtros    | 
 | PATCH  | /users/:id                 | Atualiza um usuário                                | 
 | DELETE | /users/:id                 | Deleta um usuário                                  | 
 | POST   | /products                  | Criação de produto                                 | 
@@ -404,6 +405,106 @@ Resposta: `status 200`
 ]
 ```
 
+### Listar um usuário, pelo Id
+
+`GET - /users/07eeb39a-3ad0-4632-9f86-bafffb3796d4` -- FORMATO DA REQUISIÇÃO, SEM FILTROS
+
+Não necessita corpo de requisição 
+
+Resposta: `status 200`
+```json
+{
+	"id": "07eeb39a-3ad0-4632-9f86-bafffb3796d4",
+	"email": "varela.a@gmail.com",
+	"username": "KVA",
+	"password": "$2a$10$PGmOGq7C82x/TMqs2x9F5eCNuKci2vr7Fudczv5Fdx9ofxJHkXedi",
+	"first_name": "Krishna",
+	"last_name": "Varela",
+	"purchase_orders": [
+		{
+			"id": "054a4479-11cf-4c98-9bc6-ea6b35aff881",
+			"date": "2024-02-02",
+			"items": [
+				{
+					"id": "f16928be-963a-4739-9903-06e098542ab6",
+					"quantity": 2,
+					"price": "119.98"
+				},
+				{
+					"id": "4439758c-d89e-4b7e-b602-e0da11c87298",
+					"quantity": 5,
+					"price": "39.45"
+				}
+			]
+		},
+		{
+			"id": "d01dd31d-d308-46b8-8707-b151d6a92734",
+			"date": "2024-02-04",
+			"items": []
+		},
+		{
+			"id": "8cc5cbb7-befe-40d9-8cb3-3959fee0b9a3",
+			"date": "2024-02-04",
+			"items": []
+		},
+		{
+			"id": "10eb13ec-9883-4275-b140-6fc72e8e7ac1",
+			"date": "2024-02-04",
+			"items": []
+		},
+		{
+			"id": "f9e5c293-06e5-4cb9-b752-90768047803c",
+			"date": "2024-02-02",
+			"items": []
+		},
+		{
+			"id": "2dbb1953-2ece-45b4-9a13-39c6d9ea94fc",
+			"date": "2024-02-04",
+			"items": []
+		}
+	]
+}
+```
+
+`GET - /users/07eeb39a-3ad0-4632-9f86-bafffb3796d4?filters={"date":"2024-02-02"}` -- FORMATO DA REQUISIÇÃO, COM FILTROS
+
+Não necessita corpo de requisição 
+
+Resposta: `status 200`
+```json
+{
+	"id": "07eeb39a-3ad0-4632-9f86-bafffb3796d4",
+	"email": "varela.a@gmail.com",
+	"username": "KVA",
+	"password": "$2a$10$PGmOGq7C82x/TMqs2x9F5eCNuKci2vr7Fudczv5Fdx9ofxJHkXedi",
+	"first_name": "Krishna",
+	"last_name": "Varela",
+	"purchase_orders": [
+		{
+			"id": "054a4479-11cf-4c98-9bc6-ea6b35aff881",
+			"date": "2024-02-02",
+			"items": [
+				{
+					"id": "f16928be-963a-4739-9903-06e098542ab6",
+					"quantity": 2,
+					"price": "119.98"
+				},
+				{
+					"id": "4439758c-d89e-4b7e-b602-e0da11c87298",
+					"quantity": 5,
+					"price": "39.45"
+				}
+			]
+		},
+		{
+			"id": "f9e5c293-06e5-4cb9-b752-90768047803c",
+			"date": "2024-02-02",
+			"items": []
+		}
+	]
+}
+```
+
 ### Deleção de usuário 
 
 `DELETE - /users/76438565-cb26-439f-a423-63816a7fb810` -- FORMATO DA REQUISIÇÃO
@@ -446,69 +547,105 @@ Resposta: `status 201`
 
 Resposta: `status 200`
 ```json
-{
-	"id": "07eeb39a-3ad0-4632-9f86-bafffb3796d4",
-	"email": "varela.a@gmail.com",
-	"username": "KVA",
-	"password": "$2a$10$PGmOGq7C82x/TMqs2x9F5eCNuKci2vr7Fudczv5Fdx9ofxJHkXedi",
-	"first_name": "Krishna",
-	"last_name": "Varela",
-	"purchase_order": [
-		{
-			"id": "054a4479-11cf-4c98-9bc6-ea6b35aff881",
-			"date": "2024-02-02T16:52:52.192Z",
-			"items": [
-				{
-					"id": "f16928be-963a-4739-9903-06e098542ab6",
-					"quantity": 2,
-					"price": "119.98"
-				},
-				{
-					"id": "4439758c-d89e-4b7e-b602-e0da11c87298",
-					"quantity": 5,
-					"price": "39.45"
+[
+	{
+		"id": "054a4479-11cf-4c98-9bc6-ea6b35aff881",
+		"date": "2024-02-02",
+		"items": [
+			{
+				"id": "f16928be-963a-4739-9903-06e098542ab6",
+				"quantity": 2,
+				"price": "119.98",
+				"product": {
+					"id": "60096951-81d5-4569-ae70-c2deed1d9d43",
+					"title": "A Tester",
+					"price": "59.99",
+					"description": "Product, A Tester, update ",
+					"category": "electronics",
+					"image": "urlfakesjdjfs"
 				}
-			]
-		},
-		{
-			"id": "f9e5c293-06e5-4cb9-b752-90768047803c",
-			"date": "2024-02-02T16:45:08.315Z",
-			"items": []
-		}
-	]
-}
+			},
+			{
+				"id": "4439758c-d89e-4b7e-b602-e0da11c87298",
+				"quantity": 5,
+				"price": "39.45",
+				"product": {
+					"id": "befed5e5-734a-4a1c-99cd-966348df1bf0",
+					"title": "c Tester",
+					"price": "7.89",
+					"description": "tester description",
+					"category": "food",
+					"image": "urlfakesjdjfs"
+				}
+			}
+		]
+	},
+	{
+		"id": "d01dd31d-d308-46b8-8707-b151d6a92734",
+		"date": "2024-02-04",
+		"items": []
+	},
+	{
+		"id": "8cc5cbb7-befe-40d9-8cb3-3959fee0b9a3",
+		"date": "2024-02-04",
+		"items": []
+	},
+	{
+		"id": "10eb13ec-9883-4275-b140-6fc72e8e7ac1",
+		"date": "2024-02-04",
+		"items": []
+	},
+	{
+		"id": "f9e5c293-06e5-4cb9-b752-90768047803c",
+		"date": "2024-02-02",
+		"items": []
+	},
+	{
+		"id": "2dbb1953-2ece-45b4-9a13-39c6d9ea94fc",
+		"date": "2024-02-04",
+		"items": []
+	}
+]
 ```
 
-`GET /purchaseOrder/users/07eeb39a-3ad0-4632-9f86-bafffb3796d4?filters={"date":"2024-02-02T16:52:52.192Z"}` -- FORMATO DA REQUISIÇÃO COM FILTROS 
+`GET /purchaseOrder/users/07eeb39a-3ad0-4632-9f86-bafffb3796d4?filters={"id":"054a4479-11cf-4c98-9bc6-ea6b35aff881"}` -- FORMATO DA REQUISIÇÃO COM FILTROS 
 
 Resposta: `status 200`
 ```json
-{
-	"id": "07eeb39a-3ad0-4632-9f86-bafffb3796d4",
-	"email": "varela.a@gmail.com",
-	"username": "KVA",
-	"password": "$2a$10$PGmOGq7C82x/TMqs2x9F5eCNuKci2vr7Fudczv5Fdx9ofxJHkXedi",
-	"first_name": "Krishna",
-	"last_name": "Varela",
-	"purchase_order": [
-		{
-			"id": "054a4479-11cf-4c98-9bc6-ea6b35aff881",
-			"date": "2024-02-02T16:52:52.192Z",
-			"items": [
-				{
-					"id": "f16928be-963a-4739-9903-06e098542ab6",
-					"quantity": 2,
-					"price": "119.98"
-				},
-				{
-					"id": "4439758c-d89e-4b7e-b602-e0da11c87298",
-					"quantity": 5,
-					"price": "39.45"
+[
+	{
+		"id": "054a4479-11cf-4c98-9bc6-ea6b35aff881",
+		"date": "2024-02-02",
+		"items": [
+			{
+				"id": "f16928be-963a-4739-9903-06e098542ab6",
+				"quantity": 2,
+				"price": "119.98",
+				"product": {
+					"id": "60096951-81d5-4569-ae70-c2deed1d9d43",
+					"title": "A Tester",
+					"price": "59.99",
+					"description": "Product, A Tester, update ",
+					"category": "electronics",
+					"image": "urlfakesjdjfs"
 				}
-			]
-		}
-	]
-}
+			},
+			{
+				"id": "4439758c-d89e-4b7e-b602-e0da11c87298",
+				"quantity": 5,
+				"price": "39.45",
+				"product": {
+					"id": "befed5e5-734a-4a1c-99cd-966348df1bf0",
+					"title": "c Tester",
+					"price": "7.89",
+					"description": "tester description",
+					"category": "food",
+					"image": "urlfakesjdjfs"
+				}
+			}
+		]
+	}
+]
 ```
 
 
