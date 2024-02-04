@@ -10,9 +10,9 @@ const createPurchaseOrdersController = async(req: Request, res: Response) =>{
 }
 
 const listPurchaseOrdersByUserController = async(req: Request, res: Response) =>{
-    const filters: Partial<PurchaseOrder> | null = req.query.filters ? JSON.parse(req.query.filters as string) : null;
-    const userPurchaseOrder = await listPurchaseOrderByUserService(req.params.id, filters)
-    return res.status(200).json(userPurchaseOrder)
+    const filters: any = req.query.filters ? JSON.parse(req.query.filters as string) : {}; 
+    const ordersListByUser = await listPurchaseOrderByUserService(req.params.id, filters )
+    return res.status(200).json(ordersListByUser)
 }
 
 export {
