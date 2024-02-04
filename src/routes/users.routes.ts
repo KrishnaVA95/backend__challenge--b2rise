@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createUserController, deleteUserController, listUserController, updateUserController } from "../controllers/users.controller";
+import { createUserController, deleteUserController, listUserController, retriveUserController, updateUserController } from "../controllers/users.controller";
 import { ensureDataIsValid } from "../middlewares/ensureDataIsValid.middlewares";
 import { userSchemaRequest, userSchemaUpdate } from "../schema/users.schema";
 
@@ -11,6 +11,9 @@ createUserController)
 
 userRoutes.get('', 
 listUserController)
+
+userRoutes.get('/:id', 
+retriveUserController)
 
 userRoutes.patch('/:id', 
 ensureDataIsValid(userSchemaUpdate),
