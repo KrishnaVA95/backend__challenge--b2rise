@@ -3,6 +3,8 @@ import { createUserService } from "../services/users/createUser.service";
 import { listUsersService } from "../services/users/listUsers.service";
 import { updateUserService } from "../services/users/updateUser.service";
 import { deleteUserService } from "../services/users/deleteUser.service";
+import { PurchaseOrder } from "../entities/purchaseOrders.entitie";
+import retriveUserService from "../services/users/retriveUser.service";
 
 
 const createUserController = async(req: Request, res: Response) =>{
@@ -13,6 +15,12 @@ const createUserController = async(req: Request, res: Response) =>{
 const listUserController = async(req: Request, res: Response) =>{
     const list = await listUsersService()
     return res.status(200).json(list)
+}
+
+const retriveUserController = async(req: Request, res: Response) =>{
+    const filters: Partial<PurchaseOrder> | null = req.query.filters ? JSON.parse(req.query.filters as string) : null;
+    const userPurchaseOrder = await retriveUserService(req.params.id, filters)
+    return res.status(200).json(userPurchaseOrder)
 }
 
 const updateUserController = async(req: Request, res: Response) =>{
@@ -29,5 +37,6 @@ export {
     createUserController,
     listUserController,
     updateUserController,
-    deleteUserController
+    deleteUserController,
+    retriveUserController
 }
