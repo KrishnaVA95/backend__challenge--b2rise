@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn, OneToMany, CreateDateColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn, OneToMany, CreateDateColumn, BeforeInsert } from "typeorm";
 import { User } from "./user.entitie";
 import { PurchaseOrderItem } from "./purchaseOrdersItems.entitie";
 
@@ -12,7 +12,7 @@ class PurchaseOrder {
     @JoinColumn({ name: 'user_id' })
     user: User;
 
-    @CreateDateColumn()
+    @CreateDateColumn({ type: 'date' })
     date: Date | string;
 
     @OneToMany(() => PurchaseOrderItem, (item) => item.purchaseOrder)
