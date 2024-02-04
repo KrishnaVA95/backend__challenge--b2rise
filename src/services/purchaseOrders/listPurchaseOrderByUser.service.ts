@@ -11,7 +11,7 @@ const listPurchaseOrderByUserService = async (userId: string, filter: Partial<Pu
         where:{
             id: userId
         },
-        relations: ['purchase_order', 'purchase_order.items'] 
+        relations: ['purchase_orders', 'purchase_orders.items'] 
     })
 
     if(!user){
@@ -19,7 +19,7 @@ const listPurchaseOrderByUserService = async (userId: string, filter: Partial<Pu
     }
 
     if(filter != null){
-        user.purchase_order = user.purchase_order.filter(order => {
+        user.purchase_orders = user.purchase_orders.filter(order => {
             return Object.keys(filter).every(key => {
                 if (key === 'date') {
                     // Convert both dates to ISO strings before comparing

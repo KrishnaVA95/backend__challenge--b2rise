@@ -22,7 +22,7 @@ class User{
     last_name: string;
 
     @OneToMany(() => PurchaseOrder, (purchase_order) => purchase_order.user)
-    purchase_order: PurchaseOrder[]
+    purchase_orders: PurchaseOrder[]
 
     @BeforeInsert()
     transformEmailLower(){
