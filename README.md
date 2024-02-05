@@ -1,14 +1,6 @@
 
 # 🚀 Backend challenge 
 
-
-<div>
-    <img align="center" alt="Krishna-Node" height="30" width="40" src="https://www.vectorlogo.zone/logos/nodejs/nodejs-icon.svg">
-    <img align="center" alt="Krishna-PSQL" height="30" width="40" src="https://www.vectorlogo.zone/logos/postgresql/postgresql-icon.svg">
-     <img align="center" alt="Krishna-Ts" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-plain.svg">
-</div>
-
-
 # 📋 Sobre
 
 <p>
@@ -18,6 +10,24 @@ O sistema fornece uma variedade de rotas para gerenciar essas entidades. As rota
 <p>
 Em resumo, este projeto oferece um sistema robusto e flexível para o gerenciamento de pedidos de compra, proporcionando uma ampla gama de funcionalidades para atender às necessidades dos usuários</p> 
 
+# 📋 Tecnologias e Bibliotecas
+<div>
+    <img align="center" alt="Krishna-Node" height="30" width="40" src="https://www.vectorlogo.zone/logos/nodejs/nodejs-icon.svg">
+    <img align="center" alt="Krishna-PSQL" height="30" width="40" src="https://www.vectorlogo.zone/logos/postgresql/postgresql-icon.svg">
+     <img align="center" alt="Krishna-Ts" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-plain.svg">
+</div>
+
+<ul>
+	<li>typeorm</li>
+	<li>reflect-metadata</li>
+	<li>ts-node</li>
+	<li>pg</li>
+	<li>express</li>
+	<li>express-async-errors</li>
+	<li>zod</li>
+	<li>bcryptjs</li>
+	<li>dotenv</li>
+</ul>
 
 # 📋 Instruções
 
